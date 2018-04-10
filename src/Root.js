@@ -1,10 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import stylesUtils from './styles/utils.scss';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(stylesUtils);
 
 const Root = ({}) => {
   return (
-    <div className="test-font-color">
-      Shawn`s Demo React
+    <div>
+      <div className="test-font-color">Shawn`s Demo React</div>
+      <button className={cx('test-font-color')}>Test Button</button><br/>
+      <div className={cx('test-btn')}>Test Div</div>
     </div>
   );
 }
