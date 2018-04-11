@@ -1,10 +1,70 @@
 .test-font-color {
-    color:red
+    color: material-color('cyan', '400');//颜色方法
 }
 
 .test-btn {
     width: 100px;
     height:26px;
     color: blue;
-    @include material-shadow(5)
+    @include material-shadow(5);//影子方法
 }
+
+$baseRadius: 6px !default;
+.test-border {
+    border: 3px solid material-color('red', '400');
+    border-radius: #{$baseRadius};//某些特殊情况下等则必须要以 #{$variables}形式
+}
+
+$linkColor: #08c #333 !default;//第一个值为默认值，第二个鼠标滑过值
+.test-a-tag {
+  color:nth($linkColor, 1);
+
+  &:hover {
+    color:nth($linkColor, 2);
+  }
+}
+
+.test-media-div {
+    border: 3px solid red;
+    width: 800px;
+    @include media("<=medium") {//_variables.scss内定义好的media参数来判断
+        width: 400px;
+    };
+    @include media("<small") { 
+        width: 200px;
+    };
+}
+
+.test-h1 {
+    border: 4px solid #ff9aa9;
+}
+.test-extend-div {
+    @extend .test-h1;//继承.test-h1内的所有属性
+    border-width: 2px;
+}
+
+.test-input {
+    border-radius: 2px;
+    border: 1px solid material-color('green', '800');
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    &:focus {//focus时适用
+      border: 1px solid material-color('red', '600');
+      color: material-color('cyan', '500');
+      &::placeholder {//focus后的placeholder字体颜色
+         color: material-color('yellow', '400');
+      }
+    }
+}
+
+
+@function test-double($n) {//自定义函数
+    @return $n * 2;
+}
+
+.test-function-div {
+    margin-top: 4px;
+    border: 1px solid black;
+    width: test-double(10rem);//10px 等等
+}
+

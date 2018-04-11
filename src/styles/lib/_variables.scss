@@ -1,6 +1,7 @@
-$breakpoints: (
-  small: 376px, 
-  medium: 768px, 
+
+$breakpoints: (//定义参数用于media 例 @include media("<huge") { width:1024px;}
+  small: 300px, 
+  medium:500px, 
   large: 1024px, 
   huge: 1200px
 );
